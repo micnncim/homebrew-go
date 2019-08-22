@@ -10,6 +10,8 @@ A Go client package for Homebrew.
 import "github.com/micnncim/homebrew-go"
 ```
 
+## Example
+
 ```go
 func main() {
 	stdout := &bytes.Buffer{}
