@@ -8,17 +8,17 @@ import (
 type SearchOption string
 
 const (
-	SearchOptionCasks    SearchOption = "casks"
-	SearchOptionDesc     SearchOption = "desc"
-	SearchOptionMacports SearchOption = "macports"
-	SearchOptionFink     SearchOption = "fink"
-	SearchOptionOpensuse SearchOption = "opensuse"
-	SearchOptionFedora   SearchOption = "fedora"
-	SearchOptionDebian   SearchOption = "debian"
-	SearchOptionUbuntu   SearchOption = "ubuntu"
-	SearchOptionVerbose  SearchOption = "verbose"
-	SearchOptionDebug    SearchOption = "debug"
-	SearchOptionHelp     SearchOption = "help"
+	SearchOptionCasks    SearchOption = "--casks"
+	SearchOptionDesc     SearchOption = "--desc"
+	SearchOptionMacports SearchOption = "--macports"
+	SearchOptionFink     SearchOption = "--fink"
+	SearchOptionOpensuse SearchOption = "--opensuse"
+	SearchOptionFedora   SearchOption = "--fedora"
+	SearchOptionDebian   SearchOption = "--debian"
+	SearchOptionUbuntu   SearchOption = "--ubuntu"
+	SearchOptionVerbose  SearchOption = "--verbose"
+	SearchOptionDebug    SearchOption = "--debug"
+	SearchOptionHelp     SearchOption = "--help"
 )
 
 func (o SearchOption) String() string {
@@ -41,7 +41,7 @@ func (h *homebrew) Search(ctx context.Context, text string, opts ...SearchOption
 func searchOptions(opts []SearchOption) []string {
 	execOpts := make([]string, 0, len(opts))
 	for _, opt := range opts {
-		execOpts = append(execOpts, cmdLongOption(opt.String()))
+		execOpts = append(execOpts, opt.String())
 	}
 	return execOpts
 }
