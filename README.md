@@ -12,6 +12,8 @@ import "github.com/micnncim/homebrew-go"
 
 ## Example
 
+See an [example](./example).
+
 ```go
 func main() {
 	stdout := &bytes.Buffer{}
