@@ -8,10 +8,10 @@ import (
 type UninstallOption string
 
 const (
-	UninstallOptionForce             UninstallOption = "force"
-	UninstallOptionDebug             UninstallOption = "debug"
-	UnnstallOptionIgnoreDependencies UninstallOption = "ignore-dependencies"
-	UninstallOptionHelp              UninstallOption = "help"
+	UninstallOptionForce              UninstallOption = "force"
+	UninstallOptionDebug              UninstallOption = "debug"
+	UninstallOptionIgnoreDependencies UninstallOption = "ignore-dependencies"
+	UninstallOptionHelp               UninstallOption = "help"
 )
 
 func (o UninstallOption) String() string {
@@ -19,7 +19,9 @@ func (o UninstallOption) String() string {
 }
 
 func (h *homebrew) Uninstall(ctx context.Context, formula string, opts ...UninstallOption) error {
-	args := append([]string{uninstallCmd}, uninstallOptions(opts)...)
+	args := make([]string, 0, len(opts)+2)
+	args = append(args, uninstallCmd)
+	args = append(args, uninstallOptions(opts)...)
 	args = append(args, formula)
 
 	cmd := exec.CommandContext(ctx, rootCmd, args...)

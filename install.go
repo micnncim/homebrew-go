@@ -35,7 +35,9 @@ func (o InstallOption) String() string {
 }
 
 func (h *homebrew) Install(ctx context.Context, formula string, opts ...InstallOption) error {
-	args := append([]string{installCmd}, installOptions(opts)...)
+	args := make([]string, 0, len(opts)+2)
+	args = append(args, installCmd)
+	args = append(args, installOptions(opts)...)
 	args = append(args, formula)
 
 	cmd := exec.CommandContext(ctx, rootCmd, args...)

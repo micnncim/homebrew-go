@@ -27,7 +27,9 @@ func (o ListOption) String() string {
 }
 
 func (h *homebrew) List(ctx context.Context, opts ...ListOption) error {
-	args := append([]string{listCmd}, listOptions(opts)...)
+	args := make([]string, 0, len(opts)+1)
+	args = append(args, installCmd)
+	args = append(args, listOptions(opts)...)
 
 	cmd := exec.CommandContext(ctx, rootCmd, args...)
 	cmd.Stdout = h.stdout

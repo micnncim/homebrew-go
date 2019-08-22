@@ -26,7 +26,9 @@ func (o SearchOption) String() string {
 }
 
 func (h *homebrew) Search(ctx context.Context, text string, opts ...SearchOption) error {
-	args := append([]string{searchCmd}, searchOptions(opts)...)
+	args := make([]string, 0, len(opts)+2)
+	args = append(args, searchCmd)
+	args = append(args, searchOptions(opts)...)
 	args = append(args, text)
 
 	cmd := exec.CommandContext(ctx, rootCmd, args...)
