@@ -2,7 +2,6 @@ package homebrew
 
 import (
 	"context"
-	"fmt"
 	"io"
 	"os"
 )
@@ -52,16 +51,4 @@ func New(opts ...Option) Homebrew {
 		opt(h)
 	}
 	return h
-}
-
-// cmdLongOption makes a long option text from the name.
-// e.g.) verbose -> --verbose
-func cmdLongOption(optName string) string {
-	return fmt.Sprintf("--%s", optName)
-}
-
-// cmdShortOption makes a short option text from the name.
-// e.g.) l -> -l
-func cmdShortOption(optName string) string {
-	return fmt.Sprintf("-%s", optName)
 }
