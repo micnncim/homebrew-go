@@ -43,7 +43,7 @@ func WithStderr(stderr io.Writer) Option {
 	}
 }
 
-func NewHomebrew(opts ...Option) Homebrew {
+func New(opts ...Option) Homebrew {
 	h := &homebrew{
 		stdout: os.Stdout,
 		stderr: os.Stderr,
