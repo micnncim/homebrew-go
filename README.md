@@ -18,7 +18,7 @@ See an [example](./example).
 func main() {
 	stdout := &bytes.Buffer{}
 	stderr := &bytes.Buffer{}
-	h := homebrew.NewHomebrew(
+	h := homebrew.New(
 		homebrew.WithStdout(stdout),
 		homebrew.WithStderr(stderr),
 	)
